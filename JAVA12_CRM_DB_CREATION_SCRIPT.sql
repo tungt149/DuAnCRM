@@ -135,38 +135,4 @@ VALUES
 ('9','Code CRM ','Sử dụng Sping Boot','2021-07-01','2021-12-31','3','9','2'),
 /*Dự án 3*/
 ('10','Quản lý dự án','Điều phối nguồn lực','2021-07-01','2021-12-31','3','5','2');
-	SELECT t.id as id, t.name as name, t.description as description, t.start_date as start_date, t.end_date as end_date,
-				p.id as pproject_id, p.name as project_name, p.description as project_description, p.start_date as project_start_date, p.end_date as project_end_date,p.owner as project_owner,
-				s.id as status_id, s.description as status_description, s.name as status_name,
-				u.id as user_id, u.name as user_name, u.email as user_email,u.password as user_password, u.phone as user_phone,  u.address as user_address,
-				 r.id as role_id, r.name as role_name, r.description as role_description 
-				 FROM  task t, project p, status s,user u,role r
-				 WHERE t. project_id = p.id and t.user_id =u.id and t.status_id=s.id and u.role_id = r.id
-                 ORDER BY t.id ASC;
-                 /*
-                 id 				int auto_increment,
-    name 			varchar(100) not null,
-    description 	varchar(255),
-	start_date		date,
-    end_date		date,
-    project_id		int,
-    user_id			int,
-    status_id		int,
-    primary key(id)*/
-
-SELECT t.id as id, t.name as name, t.description as description, t.start_date as start_date, t.end_date as end_date,
-				 p.id as project_id, p.name as project_name, p.description as project_description, p.start_date as project_start_date, p.end_date as project_end_date,p.owner as project_owner,
-				s.id as status_id, s.description as status_description, s.name as status_name,
-				u.id as user_id, u.name as user_name, u.email as user_email,u.password as user_password, u.phone as user_phone,  u.address as user_address,
-				 r.id as role_id, r.name as role_name, r.description as role_description 
-				 FROM  task t, project p, status s,user u,role r
-				 WHERE t. project_id = p.id and t.user_id =u.id and t.status_id=s.id and u.role_id = r.id ;
-  
-SELECT t.id as id, t.name as name, t.description as description, t.start_date as start_date, t.end_date as end_date,
-				s.name as status_name,
-				u.name as user_name
-				FROM  task t, status s,user u
-				 WHERE t.user_id =u.id and t.status_id=s.id ;
-
-UPDATE task SET name = tung,description = tung,start_date = 2021-07-01,end_date = 2021-07-01,project_id = 1,status_id = 1,user_id = 9? WHERE id = 9?;
-use crm;
+	
