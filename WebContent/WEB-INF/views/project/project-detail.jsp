@@ -67,11 +67,11 @@
                             <c:otherwise>
                                 <c:forEach var="member" items="${members}">
                                     <tr>
-                                        <td>${member.name }</td>
-                                        <td>${member.roleDescription }</td>
-                                        <td>${member.joinDate }</td>
+                                        <td>${member.name}</td>
+                                        <td>${member.roleDescription}</td>
+                                        <td>${member.joinDate}</td>
                                         <td>
-                                            <a href="<c:url value="<%=UrlConst.PROJECT_STAFF_REMOVE%>" />?projectID=${project.id}&taskID=${task.id}"
+                                            <a href="<c:url value="<%=UrlConst.PROJECT_STAFF_REMOVE%>" />?projectID=${member.projectID}&userID=${member.userID}"
                                                class="text-muted"><i class="material-icons">delete</i>
                                             </a>
                                         </td>

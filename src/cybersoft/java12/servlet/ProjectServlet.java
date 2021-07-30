@@ -100,14 +100,8 @@ public class ProjectServlet extends HttpServlet {
         int projectID = Integer.parseInt(req.getParameter("projectID"));
         int userID = Integer.parseInt(req.getParameter("userID"));
         service.removeMemberInProject(projectID, userID);
-        ProjectDTO dto = this.service.findProjectById(projectID);
-        Project project = service.convertDtoToProject(dto);
-        List<Member> members = this.userService.findMembersByProjectId(projectID);
-        if(project != null)
-            req.setAttribute("project", project);
-        if(members != null && !members.isEmpty())
-            req.setAttribute("members", members);
-        req.getRequestDispatcher(JspConst.PROJECT_DETAIL).forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + UrlConst.PROJECT_DETAIL + "?id=" + projectID);
+        
     }
 
     private void getProjectDetail(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {

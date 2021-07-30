@@ -200,13 +200,14 @@ public class ProjectDao {
 	}
 
 	public void removeMemberInProject(int projectID, int userID) throws SQLException {
-		String query = "DELETE FROM project_user WHERE user_id = ? and project_id = ?";
+		String query = "DELETE FROM project_user WHERE  project_id = ? and  user_id = ?";
 		Connection connection = MySqlConection.getConnection();
 
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setInt(1, userID);
-			statement.setInt(2, projectID);
+			statement.setInt(1, projectID);
+			statement.setInt(2, userID);
+			
 
 			statement.executeUpdate();
 

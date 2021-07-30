@@ -71,7 +71,6 @@ public class UserDao {
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, id);
-
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -213,4 +212,28 @@ public class UserDao {
 
 		return members;
     }
+
+	public boolean isMemberAssignedAnyTaskInProject(int projectID, int userID) throws SQLException {
+		String query = "SELECT * FROM task WHERE user_id = ? and project_id = ?";
+
+		Connection connection = MySqlConection.getConnection();
+
+		try {
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, userID);
+			statement.setInt(2, projectID);
+			ResultSet resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				return true;
+			}
+			return false;
+
+		} catch (SQLException e) {
+			System.out.println("Unable to connect to database.");
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+		return false;
+	}
 }

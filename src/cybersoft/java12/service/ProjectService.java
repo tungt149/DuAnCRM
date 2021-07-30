@@ -78,6 +78,9 @@ public class ProjectService {
     }
 
     public void removeMemberInProject(int projectID, int userID) throws SQLException {
-        projectDao.removeMemberInProject(projectID, userID);
+    	//Check member co dang lam 1 task nao do ko?
+    	if(!userDao.isMemberAssignedAnyTaskInProject(projectID, userID)) {
+    		projectDao.removeMemberInProject(projectID, userID);
+    	}
     }
 }
